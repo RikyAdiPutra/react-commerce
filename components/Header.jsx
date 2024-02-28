@@ -10,7 +10,7 @@ export default function Header() {
                 <div className="flex justify-between py-4 items-center gap-2">
                     <div><Link href="#" className="text-white text-2xl font-extrabold">MyCommerce</Link></div>
                     <input placeholder="Seacrh.." className="py-2 px-4 rounded flex-1 max-w-sm text-black" />
-                    <div className="cursor-pointer"><IoCartOutline /></div>
+                    <div className="cursor-pointer text-white"><IoCartOutline /></div>
                 </div>
             </div>
         </div>
