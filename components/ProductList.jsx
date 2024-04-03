@@ -1,9 +1,11 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import ItemProduct from "@/components/itemProduct"
 import { useQuery } from "@tanstack/react-query"
 import { getData } from "@/lib/services";
+
+
 
 export default function ProductList() {
     const getQuery = async () => {
@@ -34,15 +36,35 @@ export default function ProductList() {
         )
     }
 
-    console.log(query.data.data)
+    const products = query.data.data
+    console.log(products)
     return (
-        <div className="flex flex-wrap -mx-4">
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" />
+        <div className="flex flex-wrap -mx-4 bg-gradient-malibu">
+            {/* <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" />
             <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
             <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
             <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
+            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" /> */}
+
+            {/* 
+            {
+                products.map(item => (
+                    <ItemProduct
+                        title={item.title}
+                        price={item.price}
+                        src={item.image}
+                        category={item.category}
+                        link="Buy now"
+                    />
+                ))
+            } */}
+            {
+                products.map(item => {
+                    return (
+                        <ItemProduct category={item.category} title={item.title} price={`$ ${item.price}`} link={`/products/${item.id}`} image={item.image} rate={parseInt(`${item.rating.rate}`)} />
+                    )
+                })
+            }
         </div>
     )
 }
