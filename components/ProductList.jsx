@@ -1,7 +1,6 @@
 "use client"
-
 import React from 'react'
-import ItemProduct from "@/components/itemProduct"
+import ItemProduct from "@/components/ItemProduct";
 import { useQuery } from "@tanstack/react-query"
 import { getData } from "@/lib/services";
 
@@ -19,7 +18,7 @@ export default function ProductList() {
             <div className="wrapper relative flex justify-center mt-10">
                 <div className="animate-pulse w-full flex gap-4">
                     <div className="rounded-sm bg-slate-200 h-[300px] w-full "></div>
-                    <div className="rounded-sm bg-slate-200 h-[300px] w-full "></div>
+                    <div className="rounded-sm bg-slate-200 h-[300px] w-full"></div>
                     <div className="rounded-sm bg-slate-200 h-[300px] w-full "></div>
                 </div>
             </div>
@@ -34,15 +33,24 @@ export default function ProductList() {
         )
     }
 
-    console.log(query.data.data)
+    const myData = query.data.data
     return (
-        <div className="flex flex-wrap -mx-4">
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" />
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
-            <ItemProduct category="Mens" title="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" price="109.95" link="Buy Now" image="/images/prod.jpg" />
+        <div className="relative flex justify-around lg:justify-normal flex-wrap -mx-4">
+            {
+                myData.map(item => {
+                    return (
+                        <ItemProduct
+                            category={item.category}
+                            image={item.image}
+                            link={`/product/${item.id}`}
+                            title={item.title}
+                            price={`$${item.price}`}
+                            rate={parseInt(`${item.rating.rate}`)}
+                        />
+                    )
+                })
+            }
+
         </div>
     )
 }
