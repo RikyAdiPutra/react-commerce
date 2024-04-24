@@ -4,6 +4,8 @@ import ItemProduct from "@/components/ItemProduct";
 import { useQuery } from "@tanstack/react-query"
 import { getData } from "@/lib/services";
 
+
+
 export default function ProductList() {
     const getQuery = async () => {
         return await getData("/products")

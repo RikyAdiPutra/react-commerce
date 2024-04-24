@@ -11,7 +11,7 @@ import Icon from "./Icon"
 export default function Header() {
     const cart = useStrore((state) => state.cart)
     return (
-        <div className="bg-color-main">
+        <div className="bg-gradient-mojito">
             <div className="wrapper">
                 <div className="flex justify-between items-center py-5">
                     <Link href="#" className="text-white text-2xl font-extrabold">MyCommerce</Link>

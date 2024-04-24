@@ -17,6 +17,10 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        "gradient-mojito": "linear-gradient(#103CE7 0%, #64E9FF 100%)",
+        "gradient-malibu": "linear-gradient(#0700DE 40%, #DDFFC9 50%)"
+      },
       colors: {
         "color-main": "#D74435"
       },
